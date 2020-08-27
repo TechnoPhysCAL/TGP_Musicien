@@ -42,14 +42,14 @@ public:
 
 	void setPartition(char *song);
 	char *getPartition();
-	//Fonction pour jouer une note de musique en spécifiant le numéro de la broche, la note, la durée et l'octave à jouer :
-	//double note(uint8_t note, uint8_t octave, uint32_t duree);
 
+protected:
+    void changeFrequency(double);
 private:
 	double getNote();
 	double getDureeNote();
 	void trimSpace();
-	//Fonction pour arrêter de jouer une note. Pour permettre de faire un silence dans une mélodie.
+	
 	int _tempo;
 	unsigned long _pulsation;
 	int _loudness;
@@ -60,6 +60,7 @@ private:
 	unsigned long _startTime;
 	unsigned long _duree;
 	void noTone();
+	
 };
 
 #endif

@@ -1,22 +1,7 @@
-/****************************************************************
-//Librairie Musicien
-//Auteur : Richard Milette
-//Date : octobre 2019
-//version : 1.0.0
-//Description: Permet de jouer une note sur une sortie numérique d'une
-//plaquette ESP32.
-//***************************************************************/
 
 #include "Musicien.h"
 
-/***************************************************************
-// Déclaration des variables et constantes privées
-//***************************************************************/
-//Constante pour utiliser le canal 0 pwm de la plaquette ESP32 :
 
-/***************************************************************
-// Constructeur
-//***************************************************************/
 Musicien::Musicien(uint8_t address) : Del(address)
 {
 	setTempo(DEFAULT_TEMPO);
@@ -62,21 +47,6 @@ float Musicien::getLoudness()
 	return _loudness;
 }
 
-//***************************************************************************************
-//Méthodes publiques
-//***************************************************************************************
-
-/****************************************************************
-Méthode publique pour jouer une note sur une sortie numérique d'une plaquette ESP32.
-Inputs:
-   uint8_t broche	: broche numérique sur laquelle appliquer le signal PWM (50% de Duty Cycle)
-   uint8_t note		: note à jouer. Voir les définitions dans le fichier .h pour connaître la nomenclature des notes.
-   uint8_t octave	: pour spécifier dans quel octave jouer la note. Doit être compris entre 1 et 8.
-   uint32_t duree	: pour spécifier la durée de la note en millisecondes.
-Output:
-  double			: Valeur de la fréquence jouée ou -1 quand il y a une erreur.
-Note: Cette fonction utilise la bibliothèque "esp32-hal-ledc".
-****************************************************************/
 
 void Musicien::refresh()
 {
@@ -336,53 +306,16 @@ double Musicien::getNote()
 	return (double)frequenceDeBaseNote[index] / (double)(1 << (8 - octave));
 }
 
-/*
-double Musicien::note(uint16_t note, uint8_t octave, uint32_t duree)
-{
-
-	const uint16_t frequenceDeBaseNote[12] = {
-		
-	if (note == PITCH_P)
-	{
-		changeFrequency(1);
-		//ledcWriteTone(_canal, 1); //Pour corriger le bug "Aucun son" lorsque la mélodie commence par PITCH_P (pause)
-		noTone();
-		delay(duree);
-		return 0;
-	}
-	else
-	{
-		if (octave > 8 || note >= PITCH_P)
-		{
-			return -1;
-		}
-		double noteFreq = (double)frequenceDeBaseNote[note] / (double)(1 << (8 - octave));
-		changeFrequency(noteFreq);
-		double frequence = noteFreq;
-		delay(duree);
-		noTone();
-		return frequence;
-	}
-}*/
-
-//****FIN des Méthodes publiques*********************************************************
-
-//***************************************************************************************
-//Méthodes privées
-//**************************************************************************************
-/****************************************************************
-Fonction pour arrêter de jouer une note de musique. Utile dans une mélodie
-pour faire des pauses.
-Inputs:
-	uint8_t broche	: Sert à spcéfier le numéro de la broche sur laquelle nous ne désirons plus appliquer une fréquence.	
-	uint8_t canal	: Sert à spécifier le canal PWM à "éteindre"
-Output:
-  void					: Ne retourne rien.
-Note: Cette fonction utilise la bibliothèque "esp32-hal-ledc".
-****************************************************************/
-
-//Doit avoir attaché une broche et généré une tonalité avant d'appeler cette fonction.
 void Musicien::noTone()
 {
 	changeState(false, 100.0);
+}
+
+void Musicien::changeFrequency(double frequency)
+{
+
+	if (_channel >= 0)
+	{
+		ledcWriteTone(_channel, frequency);
+	}
 }
