@@ -1,0 +1,39 @@
+# Nomenclature
+Chaque note doit avoir la nomenclature suivante  : 
+
+"{octave}NOTE{altération}{durée}"
+
+{} => optionel
+
+Les notes successives peuvent être séparés par un ou des espaces pour plus de clarté.
+
+# NOTE 
+ Valeurs possibles : C c D d E e F f G g A a B b S s
+ Explication : le nom des notes réel (C== do, B==si) et le 's' pour un silence. Majuscule ou minuscule ne font pas de différence.
+
+# OCTAVE
+ Valeurs possibles :2 3 4 5 6 7 + -
+ Explication : Valeur absolue de l'octave sur un clavier réel. Le + et le moins indique l'octave supérieur et l'octave inférieur à l'octave par défaut. Par défaut, octave de 4. 
+ 
+# ALTÉRATION
+ Valeurs possibles : # _
+ Explication : # pour un dièse (un demi-ton plus haut) ou _ pour un bémol (un demi-ton plus haut).
+
+# Durée
+ Valeurs possibles : 1 2 3 4 5 6 7 8 $ ! %
+ Explication : Valeur relative un temps de tempo, $ vaut 1/2, ! vaut 1/4 et % vaut 3/4. Par défaut, 1.
+ 
+Copyright (C) 2019-2020 - Technologie du génie physique - Cégep André-Laurendeau
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
