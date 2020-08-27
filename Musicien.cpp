@@ -314,8 +314,8 @@ void Musicien::noTone()
 void Musicien::changeFrequency(double frequency)
 {
 
-	if (_channel >= 0)
+	if (getChannel() >= 0)
 	{
-		ledcWriteTone(_channel, frequency);
+		ledcWriteTone(getChannel(), frequency);
 	}
 }
