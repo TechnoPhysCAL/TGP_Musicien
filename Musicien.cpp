@@ -63,9 +63,6 @@ void Musicien::refresh()
 				double note = getNote();
 				changeFrequency(note);
 				_duree = (unsigned long)(getDureeNote() * _pulsation);
-				Serial.print(note);
-				Serial.print('-');
-				Serial.println(_duree);
 			}
 			else
 			{
@@ -75,7 +72,7 @@ void Musicien::refresh()
 	}
 	else
 	{
-		changeFrequency(1);
+		noTone();
 	}
 }
 
@@ -103,7 +100,6 @@ void Musicien::stop()
 	_playing = false;
 	_pausing = false;
 	_cursor = _song;
-
 }
 void Musicien::setPartition(char *song)
 {
