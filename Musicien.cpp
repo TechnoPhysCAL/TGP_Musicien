@@ -61,6 +61,7 @@ void Musicien::refresh()
 
 				trimSpace();
 				double note = getNote();
+
 				changeFrequency(note);
 				_duree = (unsigned long)(getDureeNote() * _pulsation);
 			}
@@ -301,7 +302,7 @@ double Musicien::getNote()
 
 void Musicien::noTone()
 {
-	changeState(false, 100.0);
+	changeState(false, getBrightness());
 }
 
 void Musicien::changeFrequency(double frequency)
@@ -309,6 +310,15 @@ void Musicien::changeFrequency(double frequency)
 
 	if (getChannel() >= 0)
 	{
-		ledcWriteTone(getChannel(), frequency);
+		if (frequency != 1)
+		{
+			ledcWriteTone(getChannel(), frequency);
+			changeState(true, getBrightness());
+		}
+		else
+		{
+			//ledcWriteTone(getChannel(), 1);
+			changeState(false, getBrightness());
+		}
 	}
 }
