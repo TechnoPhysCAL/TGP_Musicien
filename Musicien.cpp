@@ -1,7 +1,6 @@
 
 #include "Musicien.h"
 
-
 Musicien::Musicien(uint8_t address) : Del(address)
 {
 	setTempo(DEFAULT_TEMPO);
@@ -47,7 +46,6 @@ float Musicien::getLoudness()
 	return _loudness;
 }
 
-
 void Musicien::refresh()
 {
 	unsigned long now = millis();
@@ -77,7 +75,7 @@ void Musicien::refresh()
 	}
 	else
 	{
-		noTone();
+		changeFrequency(1);
 	}
 }
 
@@ -106,7 +104,6 @@ void Musicien::stop()
 	_pausing = false;
 	_cursor = _song;
 
-	noTone();
 }
 void Musicien::setPartition(char *song)
 {
