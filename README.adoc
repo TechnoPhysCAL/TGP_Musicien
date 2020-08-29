@@ -1,5 +1,7 @@
 = Librairie TGP Musicien =
 
+À compléter.
+
 # Nomenclature
 Chaque note doit avoir la nomenclature suivante  : 
 
