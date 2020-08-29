@@ -308,6 +308,7 @@ void Musicien::noTone()
 void Musicien::changeFrequency(double frequency)
 {
 
+#ifdef ESP_PLATFORM
 	if (getChannel() >= 0)
 	{
 		if (frequency != 1)
@@ -321,4 +322,7 @@ void Musicien::changeFrequency(double frequency)
 			changeState(false, getBrightness());
 		}
 	}
+#else
+	analogWrite(getAddress(), state ? (brightness * 2.55) : 0.0);
+#endif
 }
