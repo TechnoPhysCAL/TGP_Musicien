@@ -77,6 +77,17 @@ void Musicien::refresh()
 	}
 }
 
+void Musicien::setPlaying(bool playing)
+{
+	if (playing)
+	{
+		play()
+	}
+	else
+	{
+		stop();
+	}
+}
 bool Musicien::isPlaying()
 {
 	return _playing;

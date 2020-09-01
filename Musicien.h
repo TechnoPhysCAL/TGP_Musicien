@@ -28,6 +28,7 @@ public:
 	void refresh();
 
 	void play();
+	void setPlaying(bool);
 	bool isPlaying();
 	void stop();
 
