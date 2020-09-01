@@ -35,7 +35,7 @@ Chaque note doit avoir la nomenclature suivante  :
  
 #### ALTÉRATION
 - Valeurs possibles : # _
-- Explication : # pour un dièse (un demi-ton plus haut) ou _ pour un bémol (un demi-ton plus haut).
+- Explication : # pour un dièse (un demi-ton plus haut) ou _ pour un bémol (un demi-ton plus bas).
 
 #### DURÉE
 - Valeurs possibles : 1 2 3 4 5 6 7 8 $ ! %
@@ -109,28 +109,28 @@ setPlaying(false) a le même effet que stop().
 
 ---
 ```cpp
-void setPause(bool)
+void setPause(bool value)
 bool getPause()
 ```
 Cette méthode permet de lire et modifier l'état de pause du musicien. Lorsqu'il est en pause, l'état actif est toujours vrai (getPlaying() retourne TRUE), mais le musicien est en attente avant de jouer la prochaine note.
 
 ---
 ```cpp
-void setTempo(int)
+void setTempo(int value)
 int getTempo()
 ```
 Cette méthode permet de lire et modifier le tempo de la musique, qui correspond au nombre de temps musicaux durant une minute. Par exemple, un tempo de 120 signifie qu'il y aura 120 notes de 1 temps joué durant 1 minute - ou que chaque note durera 0.5 seconde.
 
 ---
 ```cpp
-void setLoudness(float)
+void setLoudness(float percentage)
 float getLoudness()
 ```
 Cette méthode permet de lire et modifier l'intensité sonore du *buzzer*. La valeur attendue se situe entre 0.0 et 100.0.
 
 ---
 ```cpp
-void setPartition(char *song)
+void setPartition(char *partition)
 char *getPartition()
 ```
 Cette méthode permet de lire et modifier la partition du musicien, soit une chaîne de texte formaté selon la notation expliquée à la section 'Notation musicale'.
