@@ -81,13 +81,14 @@ void Musicien::setPlaying(bool playing)
 {
 	if (playing)
 	{
-		play()
+		play();
 	}
 	else
 	{
 		stop();
 	}
 }
+
 bool Musicien::isPlaying()
 {
 	return _playing;
